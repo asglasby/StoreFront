@@ -1,28 +1,35 @@
 ﻿"use strict"
 window.myUrl = "https://ebodycenter.firebaseio.com/.json";
 window.myUsersUrl = "https://ebodycenter.firebaseio.com/Users.json";
+window.myProductsUrl = "https://ebodycenter.firebaseio.com/Products.json";
 window.listofUsers = [];
 window.listOfUsersToFirebase=[];
 window.username = "";
 window.password = "";
 window.newUser = "";
 
+var userPrototype = {};
+userPrototype["shoppingCart"] = [];
+
 var User = function (username, password) {
     this["username"] = username;
     this["password"] = password;
 };
+User.prototype = userPrototype;
 
 var productPrototype = {};
 productPrototype["storeName"] = "EbodyCenter";
 
-var Products = function (productName, productDescription, productPrice, productPicture) {
+
+var Product = function (productName, productDescription, productPrice, productPicture, productCategory) {
     this["productName"] = productName;
     this["productDescription"] = productDescription;
     this["productPrice"] = productPrice;
     this["productPicture"] = productPicture;
+    this["productCategory"] = productCategory;
 };
 
-Products.prototype = productPrototype;
+Product.prototype = productPrototype;
 
 var login = function () {
     "use strict";    
