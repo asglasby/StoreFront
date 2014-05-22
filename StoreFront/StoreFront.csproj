@@ -65,8 +65,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="userlogin3.js" />
-    <Content Include="createaccount.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -94,7 +92,6 @@
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="sendUsers.js" />
     <Content Include="style.css" />
-    <Content Include="userlogins.js" />
     <Content Include="Web.config" />
     <Content Include="_main.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />

@@ -23,15 +23,16 @@ window.productID = "";
 window.productList = [];
 window.shoppingCartCounter = 0;
 
-var userPrototype = {};
-userPrototype.shoppingCart = [];
+//var userPrototype = {};
+//userPrototype.shoppingCart = [];
 
 var User = function (username, password, shoppingCart) {
     this["username"] = username;
-    this["password"] = password;    
+    this["password"] = password;
+    this["shoppingCart"] = [];
 };
 
-User.prototype = userPrototype;
+// User.prototype = userPrototype;
 
 var productPrototype = {};
 productPrototype["storeName"] = "Body Center";
@@ -57,5 +58,23 @@ var loginScreen = function () {
     document.getElementById("userInfo").innerHTML = '<input id="username" placeholder="Enter Username to Login" />' + '<input id="password" placeholder="Enter Password" />' + '<button class="btn" onclick="authenticateUser();">Login</button>'; 
 };
 
+var startOver = function () {
+    "use strict";
+    alert("The startOver function is not yet working!");
+};
 
+// This function will allow you to search the storefront for a product
+var productSearch = function () {
+    "use strict";
+    alert("The Product Search button is not working yet");
+};
 
+var logout = function () {
+    "use strict";
+    document.getElementById("storeFront").innerHTML = "";
+    document.getElementById("productTable").innerHTML = "";
+    document.getElementById("logoutButton").innerHTML = "";
+    document.getElementById("completeTransaction").innerHTML = "";
+    document.getElementById("localStorage").innerHTML = "";
+    loginScreen();
+};
