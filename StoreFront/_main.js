@@ -1,27 +1,43 @@
-﻿"use strict"
+﻿/*  1. Add a delete button to remove items from the product list when logged in as admin
+    2. Add a delete button to remove items from the shopping cart when logged in as a regular user.
+    3. Send Items correctly to the firebase server so that items are displayed correctly in firebase.
+    4. Add a quantity input field to the product list and shopping cart.
+    5. Automatically wrap photo links around image tags for insertion into the database if possible.
+    6. Add a drop down list in the admin section to add different categories.
+    7. Change the addToShoppingCart function to come from the Array which should be stored in local storage.
+*/
+
+"use strict"
 window.myUrl = "https://ebodycenter.firebaseio.com/.json";
 window.myUsersUrl = "https://ebodycenter.firebaseio.com/Users.json";
 window.myProductsUrl = "https://ebodycenter.firebaseio.com/Products.json";
+window.myOrdersUrl ="https://ebodycenter.firebaseio.com/Orders.json";
 window.listofUsers = [];
 window.listOfUsersToFirebase=[];
 window.username = "";
 window.password = "";
 window.newUser = "";
+window.loggedInUser = "";
+window.itemcounter = 1;
+window.productID = "";
+window.productList = [];
+window.shoppingCartCounter = 0;
 
 var userPrototype = {};
-userPrototype["shoppingCart"] = [];
+userPrototype.shoppingCart = [];
 
-var User = function (username, password) {
+var User = function (username, password, shoppingCart) {
     this["username"] = username;
-    this["password"] = password;
+    this["password"] = password;    
 };
+
 User.prototype = userPrototype;
 
 var productPrototype = {};
-productPrototype["storeName"] = "EbodyCenter";
-
+productPrototype["storeName"] = "Body Center";
 
 var Product = function (productName, productDescription, productPrice, productPicture, productCategory) {
+    "use strict";
     this["productName"] = productName;
     this["productDescription"] = productDescription;
     this["productPrice"] = productPrice;
@@ -37,20 +53,8 @@ var login = function () {
 };
 
 var loginScreen = function () {
-    document.getElementById("userInfo").innerHTML = '<input id="username" placeholder="Enter Username to Login" />' + '<input id="password" placeholder="Enter Password" />' + '<button class="btn" onclick="authenticateUser();">Login</button>';
-    //onclick get the list of usernames and check to see if the username exists, if not, set the username and password.  Then store in firebase and local storage.  
-
-    //if (typeof (Storage) !== "undefined") {
-    //    localStorage.setItem(username, "");
-    //    localStorage.setItem(password, "");
-
-    //    //check to see if the username already exists.  If the username does not exist, set the username.
-    //    var username = document.getElementById("username").value;
-    //    var password = document.getElementById("password").value;
-    //}
-    //else {
-    //    // Sorry! No Web Storage support..
-    //}
+    "use strict";
+    document.getElementById("userInfo").innerHTML = '<input id="username" placeholder="Enter Username to Login" />' + '<input id="password" placeholder="Enter Password" />' + '<button class="btn" onclick="authenticateUser();">Login</button>'; 
 };
 
 
