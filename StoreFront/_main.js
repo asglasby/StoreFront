@@ -27,6 +27,7 @@ window.shoppingCartCounter = 0;
 //userPrototype.shoppingCart = [];
 
 var User = function (username, password, shoppingCart) {
+    "use strict";
     this["username"] = username;
     this["password"] = password;
     this["shoppingCart"] = [];
